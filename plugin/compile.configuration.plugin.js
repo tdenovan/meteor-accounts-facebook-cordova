@@ -30,6 +30,9 @@ var configStringify = function(config) {
 Plugin.registerSourceHandler('facebook.json', function(compileStep) {
     // Read the configuration
     var configString = compileStep.read().toString('utf8');
+
+    if (!configString) return;
+
     try {
         // Try parsing the json
         configString = EJSON.parse(configString);
