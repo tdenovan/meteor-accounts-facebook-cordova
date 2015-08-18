@@ -1,7 +1,6 @@
 var profileFields = [];
 
 CFB.Configure = function (config) {
-    console.log(config);
     if(Meteor.settings.environment === "production")
         if(!config || !config.pro.APP_ID || !config.pro.secret) {
             throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
