@@ -1,9 +1,15 @@
 var profileFields = [];
 
 CFB.Configure = function (config) {
-    if(!config || !config.APP_ID || !config.secret) {
-        throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
-    }
+    console.log(config);
+    if(Meteor.settings.environment === "production")
+        if(!config || !config.pro.APP_ID || !config.pro.secret) {
+            throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
+        }
+    if(Meteor.settings.environment === "development")
+        if(!config || !config.dev.APP_ID || !config.dev.secret) {
+            throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
+        }
     if(config.profileFields) {
         _.each(config.profileFields, function (p) {
             if(_.indexOf(profileFields, p) == -1)
@@ -13,11 +19,18 @@ CFB.Configure = function (config) {
     ServiceConfiguration.configurations.remove({
         service: "facebook"
     });
-    ServiceConfiguration.configurations.insert({
-        service: "facebook",
-        appId: config.APP_ID,
-        secret: config.secret
-    });
+    if(Meteor.settings.environment === "production")
+        ServiceConfiguration.configurations.insert({
+            service: "facebook",
+            appId: config.pro.APP_ID,
+            secret: config.pro.secret
+        });
+    if(Meteor.settings.environment === "development")
+        ServiceConfiguration.configurations.insert({
+            service: "facebook",
+            appId: config.dev.APP_ID,
+            secret: config.dev.secret
+        });  
     // https://github.com/meteor/meteor/blob/devel/packages/accounts-facebook/facebook.js#L15
     Accounts.addAutopublishFields({
         // publish all fields including access token, which can legitimately

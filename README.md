@@ -62,6 +62,25 @@ meteor add particle4dev:cordova-fb
     ]
 }
 ````
+### Config meteor settings
+production.json
+```
+{
+    "environment": "production"
+}
+```
+`meteor run --settings production.json`
+
+OR
+
+development.json
+```
+{
+    "environment": "development"
+}
+```
+`meteor run --settings development.json`
+
 ================
 
 ### API

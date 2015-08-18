@@ -24,7 +24,8 @@ CFB.loginCodova = function (callback) {
 CFB.shareFeed = function (options, callback) {
     options.method = "feed";
     var onError = function (message) {
-        callback(new Error(message.errorMessage), null);
+        // callback(new Error(message.errorMessage), null);
+        callback(message, null);
     };
     var onSuccess = function (res) {
         callback(null, res);
@@ -34,7 +35,8 @@ CFB.shareFeed = function (options, callback) {
 CFB.share = function (options, callback) {
     options.method = "share";
     var onError = function (message) {
-        callback(new Error(message.errorMessage), null);
+        // callback(new Error(message.errorMessage), null);
+        callback(message, null);
     };
     var onSuccess = function (res) {
         callback(null, res);

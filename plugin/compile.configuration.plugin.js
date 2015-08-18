@@ -16,8 +16,8 @@ var archConfig = {
     // server
     'os': function(config) {
         var r = {};
-        r.APP_ID = config.cordova.APP_ID;
-        r.secret = config.cordova.secret;
+        r.pro = config.cordova.pro;
+        r.dev = config.cordova.dev;
         r.profileFields = config.profileFields;
         return r;
     }
