@@ -1,6 +1,27 @@
-var profileFields = [];
+var profileFields = [
+          "id",
+          "name",
+          "gender",
+          "location",
+          "email",
+          "first_name",
+          "last_name",
+          "link",
+          "username",
+          "locale",
+          "age_range"
+      ];
 
 CFB.Configure = function (config) {
+  config = {} unless config?
+  config.pro = {} unless.config.pro?
+  config.dev = {} unless.config.dev?
+  config.pro.APP_ID = process.env.FACEBOOK_APP_ID
+  config.pro.APP_ID = process.env.FACEBOOK_APP_SECRET
+  config.dev.APP_ID = process.env.FACEBOOK_APP_ID
+  config.dev.APP_ID = process.env.FACEBOOK_APP_SECRET
+  
+    // Manually override the config
     if(Meteor.settings.environment === "production")
         if(!config || !config.pro.APP_ID || !config.pro.secret) {
             throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
@@ -9,12 +30,6 @@ CFB.Configure = function (config) {
         if(!config || !config.dev.APP_ID || !config.dev.secret) {
             throw new Error("Meteor settings for accounts-facebook-cordova not configured correctly.");
         }
-    if(config.profileFields) {
-        _.each(config.profileFields, function (p) {
-            if(_.indexOf(profileFields, p) == -1)
-                profileFields.push(p); 
-        });
-    }
     ServiceConfiguration.configurations.remove({
         service: "facebook"
     });
