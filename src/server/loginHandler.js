@@ -1,4 +1,5 @@
 // https://github.com/meteor/meteor/blob/devel/packages/facebook/facebook_server.js
+Accounts.oauth.registerService('facebook');
 Accounts.registerLoginHandler(function(loginRequest) {
     if(!loginRequest.cordova) {
         return undefined;
