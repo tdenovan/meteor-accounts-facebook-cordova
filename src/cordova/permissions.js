@@ -3,6 +3,7 @@ var _permissions = [];
  *
  */
 CFB.Configure = function (permissions) {
+  // console.log(permissions);
     _.each(permissions, function (p) {
         if(_.indexOf(_permissions, p) == -1)
             _permissions.push(p); 

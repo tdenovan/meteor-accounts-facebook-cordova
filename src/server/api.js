@@ -3,7 +3,7 @@
  */
 var getIdentity = function (accessToken) {
   	try {
-    	return HTTP.get("https://graph.facebook.com/v2.2/me", {
+    	return HTTP.get("https://graph.facebook.com/v2.2/me?fields=id,name,email,age_range,first_name,last_name,link,locale,gender,location", {
       		params: {access_token: accessToken}}).data;
   	} catch (err) {
     	throw _.extend(new Error("Failed to fetch identity from Facebook. " + err.message),
