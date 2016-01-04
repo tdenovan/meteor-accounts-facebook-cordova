@@ -20,6 +20,7 @@ CFB.Configure = function (config) {
   ServiceConfiguration.configurations.remove({
       service: "facebook"
   });
+  console.log('Configuring facebook using cordova-facebook plugin');
   ServiceConfiguration.configurations.insert({
       service: "facebook",
       appId: appId,
@@ -34,7 +35,7 @@ CFB.Configure = function (config) {
       forLoggedInUser: ['services.facebook'],
       forOtherUsers: [
           // https://www.facebook.com/help/167709519956542
-          'services.facebook.id', 'services.facebook.username', 'services.facebook.gender'
+          'services.facebook.id', 'services.facebook.gender'
       ]
   });
 };

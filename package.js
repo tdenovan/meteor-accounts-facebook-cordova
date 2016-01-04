@@ -12,7 +12,7 @@ var browser = 'web.browser';
 var cordova = 'web.cordova';
 
 Cordova.depends({
-    'com.phonegap.plugins.facebookconnect': '0.11.0'
+    'phonegap-facebook-plugin': '0.12.0'
 });
 
 Package.registerBuildPlugin({

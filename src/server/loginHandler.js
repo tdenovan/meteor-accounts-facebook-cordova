@@ -16,7 +16,7 @@ Accounts.registerLoginHandler(function(loginRequest) {
     };
 
     var whitelisted = ['id', 'email', 'name', 'first_name',
-        'last_name', 'link', 'username', 'gender', 'locale', 'age_range'];
+        'last_name', 'link', 'gender', 'locale', 'age_range'];
 
     var fields = _.pick(identity, whitelisted);
     _.extend(serviceData, fields);
